@@ -103,15 +103,15 @@ class GameStats
     avps = @game_data.group_by do |season|
       count_of_games_by_season.keys.each do |sea|
         require "pry"; binding.pry
-      # season["season"]
       # if season.values_at("season")[0] == sea
       # total = season.values_at("away_goals")[0].to_f + season.values_at("home_goals")[0].to_f
+      end
     end
-    end
-    # sum = 0
-    # avps.each do |avp|
-    #   avp[1].each do |a|
-    # # require "pry"; binding.pry
-
   end
 end
+# season["season"]
+# sum = 0
+# avps.each do |avp|
+#   avp[1].each do |a|
+# # require "pry"; binding.pry
+
