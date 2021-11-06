@@ -5,11 +5,13 @@ require './lib/stat_tracker'
 SimpleCov.start
 
 class GameStats
-  attr_reader :game_data
+  attr_reader :game_data,
+              :game_data1
 
   def initialize(game_data)
     #@game_data = CSV.read("./data/sample_games.csv")
     @game_data = CSV.parse(File.read("./data/sample_games.csv"), headers: true)
+    @game_data1 = CSV.read(File.read("./data/sample_games.csv"), headers: true)
   end
 
   def highest_total_score
@@ -99,16 +101,62 @@ class GameStats
     avg_goal_per_game.round(2)
   end
 
+  # def total_goals
+  #   x = []
+  #   @game_data.each do |game|
+  #     x << game
+  #   end
+  #     require "pry"; binding.pry
+  #   sum = x[8].values_at[6].to_f + x[8].values_at[7].to_f
+  # end
+
   def average_goals_per_season
+    total = 0
+    avg = 0
+    avg_hash = Hash.new(0)
     avps = @game_data.group_by do |season|
       count_of_games_by_season.keys.each do |sea|
-        require "pry"; binding.pry
-      # if season.values_at("season")[0] == sea
-      # total = season.values_at("away_goals")[0].to_f + season.values_at("home_goals")[0].to_f
+        if season["season"] == sea
+          require "pry"; binding.pry
+        total = season.values_at("away_goals")[0].to_f + season.values_at("home_goals")[0].to_f
+        end
       end
     end
   end
+
+  # def average_goals_per_season
+  #   total = 0.0
+  #   avg = 0.0
+  #   x = nil
+  #   avg_hash = Hash.new(0)
+  #   avps = @game_data.group_by do |season|
+  #     count_of_games_by_season.each do |sea|
+  #       if season.values_at("season")[0] == sea[0]
+  #         require "pry"; binding.pry
+  #         x = (season.values_at("away_goals")[0].to_f + season.values_at("home_goals")[0].to_f)
+  #         #require "pry"; binding.pry
+  #       else
+  #       end
+  #       total = x
+  #       avg = (total.to_f / sea.last.to_f).round(2)
+  #       #require "pry"; binding.pry
+  #       avg_hash[sea[0]] = avg
+  #     end
+  #   end
+  #   avg_hash
+  # end
+
+  # def
+  #   total_goals_per_season = Hash.new(0)
+  #   @game_data["away_goals"].each do |ag|
+  #     ag.values_at(away_goals)
+  #     total_games_per_season[game] += 1
+  #   end
+  #   total_games_per_season
+  # end
 end
+
+
 # season["season"]
 # sum = 0
 # avps.each do |avp|
