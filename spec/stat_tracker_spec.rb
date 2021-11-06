@@ -15,8 +15,15 @@ RSpec.describe StatTracker do
     @stat_tracker = StatTracker.from_csv(@locations)
   end
 
-
   it 'exists' do
   expect(@stat_tracker).to be_an_instance_of(StatTracker)
+  end
+
+  it 'can create_new' do
+    expect(@stat_tracker.create_new_games(@game_path)).to eq
+  end
+
+  xit "#highest_total_score" do
+    expect(@stat_tracker.highest_total_score).to eq 11
   end
 end

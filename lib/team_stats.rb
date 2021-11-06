@@ -17,7 +17,7 @@ class TeamStats
   def team_info_log_method
     @team_info.each do |game|
       if @team_info_log.keys.include? (game["team_id"])
-        else
+      else
         @team_info_log[game["team_id"]] = [[game["franchiseId"]], [game["teamName"]], [game["abbreviation"]], [game["link"]]]
       end
     end
@@ -29,16 +29,16 @@ class TeamStats
 
   def season_log_method
     @game_data.each do |game|
-      if @team_info_log[game["HoA"] == "away"
-        if @teams_games_goals_avg_away.keys.include? (game["team_id"])
-        else
-          @teams_games_goals_avg_away[game["team_id"]] = [0,0]
-        end
-        current_goals = game["goals"].to_i
-        first = (@teams_games_goals_avg_away[game["team_id"]][0] += 1)
-        second = (@teams_games_goals_avg_away[game["team_id"]][1] += current_goals)
-        @teams_games_goals_avg_away[game["team_id"]] = [first, second]
-      end
+      # if @team_info_log[game["HoA"] == "away"
+      #   # The "if" below is causing the stat_tracker spec to throw and error
+      #   #if @teams_games_goals_avg_away.keys.include? (game["team_id"])
+      #   else
+      #     @teams_games_goals_avg_away[game["team_id"]] = [0,0]
+      #   end
+      #   current_goals = game["goals"].to_i
+      #   first = (@teams_games_goals_avg_away[game["team_id"]][0] += 1)
+      #   second = (@teams_games_goals_avg_away[game["team_id"]][1] += current_goals)
+      #   @teams_games_goals_avg_away[game["team_id"]] = [first, second]
     end
   end
 end
