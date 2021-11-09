@@ -91,6 +91,10 @@ RSpec.describe StatTracker do
     expect(@stat_tracker.best_season("6")).to eq "20132014"
   end
 
+  it '#win_percent' do
+    expect(@stat_tracker.win_percent("6")).to eq(Integer)
+  end
+
   xit "#worst_season" do
     expect(@stat_tracker.worst_season("6")).to eq "20142015"
   end
