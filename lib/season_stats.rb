@@ -5,10 +5,10 @@ SimpleCov.start
 
 class SeasonStats
   attr_reader :season_data
-  def initialize(game_team_path, game_path, team_path)
-    @season_data = CSV.parse(File.read(game_team_path), headers: true)
-    @game_data = CSV.parse(File.read(game_path), headers: true)
-    @team_data = CSV.parse(File.read(team_path), headers: true)
+  def initialize(game_teams_path, game_data, team_data)
+    @season_data = CSV.parse(File.read('./data/game_teams.csv'), headers: true)
+    @game_data = CSV.parse(File.read('./data/games.csv'), headers: true)
+    @team_data = CSV.parse(File.read('./data/teams.csv'), headers: true)
     @total_games_per_season = 0
   end
 

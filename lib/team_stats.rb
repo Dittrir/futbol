@@ -30,4 +30,3 @@ class TeamStats
     end
   end
 end
-

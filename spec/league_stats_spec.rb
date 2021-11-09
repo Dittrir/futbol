@@ -28,6 +28,31 @@ RSpec.describe LeagueStats do
     expect(@stat_tracker.team_info("18")).to eq expected
   end
 
+  it '#best_offense' do
+
+    expect(@league_stats.best_offense).to eq("LA Galaxy")
+  end
+
+  it '#worst_offense' do
+
+    expect(@league_stats.worst_offense).to eq("Sporting Kansas City")
+  end
+
+  it '#highest_scoring_visitor' do
+
+    expect(@league_stats.highest_scoring_visitor).to eq("FC Dallas")
+  end
+
+  it '#highest_scoring_home_team' do
+
+    expect(@league_stats.highest_scoring_home_team).to eq("LA Galaxy")
+  end
+
+  it 'lowest_scoring_visitor' do
+
+    expect(@league_stats.worst_offense).to eq("Sporting Kansas City")
+  end
+
   it "#count_of_teams" do
     expect(@stat_tracker.count_of_teams).to eq 32
   end
@@ -51,7 +76,7 @@ RSpec.describe LeagueStats do
   it "#lowest_scoring_visitor" do
     expect(@stat_tracker.lowest_scoring_visitor).to eq "San Jose Earthquakes"
   end
-
+  
   it "#lowest_scoring_home_team" do
     expect(@stat_tracker.lowest_scoring_home_team).to eq "Utah Royals FC"
   end
