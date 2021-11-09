@@ -20,10 +20,6 @@ class TeamStats
     @link         = team_data["link"]
   end
 
-
-
-
-
   def win_loss_counter
     @season_data.each do |game|
       if game["result"] == "WIN"
@@ -33,4 +29,4 @@ class TeamStats
       end
     end
   end
-end 
+end

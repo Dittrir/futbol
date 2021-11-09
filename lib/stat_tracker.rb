@@ -9,7 +9,12 @@ require_relative './game_team_stats'
 SimpleCov.start
 
 class StatTracker
-  attr_accessor :game_teams_path, :teams_path, :games_path
+  attr_accessor :game_teams_path,
+                :teams_path,
+                :games_path,
+                :games_path_1,
+                :teams_path_1,
+                :game_teams_path_1
 
   def initialize(locations)
     @game_hash = {}
@@ -17,7 +22,10 @@ class StatTracker
     @game_teams_hash = {}
     @games_path = games(locations[:games])
     @teams_path = my_teams(locations[:teams])
-    #@game_teams_path = my_game_teams(locations[:game_teams])
+    @game_teams_path = my_game_teams(locations[:game_teams])
+    @games_path_1 = CSV.parse(File.read("./data/games.csv"), headers: true)
+    @teams_path_1 = CSV.parse(File.read("./data/teams.csv"), headers: true)
+    @game_teams_path_1 = CSV.parse(File.read("./data/game_teams.csv"), headers: true)
   end
 
   def self.from_csv(locations)
@@ -109,52 +117,52 @@ class StatTracker
   end
 
   def best_offense
-    league_stats = LeagueStats.new(@game_teams_path)
+    league_stats = LeagueStats.new(@game_teams_path_1)
     league_stats.best_offense
   end
 
   def worst_offense
-    league_stats = LeagueStats.new(@game_teams_path)
+    league_stats = LeagueStats.new(@game_teams_path_1)
     league_stats.worst_offense
   end
 
   def highest_scoring_visitor
-    league_stats = LeagueStats.new(@game_teams_path)
+    league_stats = LeagueStats.new(@game_teams_path_1)
     league_stats.highest_scoring_visitor
   end
 
   def highest_scoring_home_team
-    league_stats = LeagueStats.new(@game_teams_path)
+    league_stats = LeagueStats.new(@game_teams_path_1)
     league_stats.highest_scoring_home_team
   end
 
   def lowest_scoring_visitor
-    league_stats = LeagueStats.new(@game_teams_path)
+    league_stats = LeagueStats.new(@game_teams_path_1)
     league_stats.lowest_scoring_visitor
   end
 
   def lowest_scoring_home_team
-    league_stats = LeagueStats.new(@game_teams_path)
+    league_stats = LeagueStats.new(@game_teams_path_1)
     league_stats.lowest_scoring_home_team
   end
 
   def winningest_coach(season_id)
-    season_stats = SeasonStats.new(@game_teams_path, @games_path, @teams_path)
+    season_stats = SeasonStats.new(@game_teams_path_1, @games_path_1, @teams_path_1)
     season_stats.winningest_coach(season_id)
   end
 
   def worst_coach(season_id)
-    season_stats = SeasonStats.new(@game_teams_path, @games_path, @teams_path)
+    season_stats = SeasonStats.new(@game_teams_path_1, @games_path_1, @teams_path_1)
     season_stats.worst_coach(season_id)
   end
 
   def most_accurate_team(season_id)
-    season_stats = SeasonStats.new(@game_teams_path, @games_path, @teams_path)
+    season_stats = SeasonStats.new(@game_teams_path_1, @games_path_1, @teams_path_1)
     season_stats.most_accurate_team(season_id)
   end
 
   def least_accurate_team(season_id)
-    season_stats = SeasonStats.new(@game_teams_path, @games_path, @teams_path)
+    season_stats = SeasonStats.new(@game_teams_path_1, @games_path_1, @teams_path_1)
     season_stats.least_accurate_team(season_id)
   end
 
@@ -223,7 +231,7 @@ class StatTracker
   #   win_percent = 0.0
   #   #need to return season id for team's highest percentage of wins
   #   @game_teams_hash.map do |team|
-  #     require "pry"; binding.pry
+  #   require "pry"; binding.pry
   #   end
-  #end
+  # end
 end

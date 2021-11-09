@@ -87,7 +87,7 @@ RSpec.describe StatTracker do
     expect(@stat_tracker.team_info("18")).to eq expected
   end
 
-  it "#best_season" do
+  xit "#best_season" do
     expect(@stat_tracker.best_season("6")).to eq "20132014"
   end
 
@@ -114,5 +114,4 @@ RSpec.describe StatTracker do
   xit "#rival" do
     expect(@stat_tracker.rival("18")).to eq("Houston Dash").or(eq("LA Galaxy"))
   end
-
 end
