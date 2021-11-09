@@ -13,42 +13,46 @@ RSpec.describe LeagueStats do
   end
 
   it 'exists' do
-
     expect(@league_stats).to be_an_instance_of(LeagueStats)
   end
 
-  it '#count_of_teams' do
+  it "#team_info" do
+    expected = {
+      "team_id" => "18",
+      "franchise_id" => "34",
+      "team_name" => "Minnesota United FC",
+      "abbreviation" => "MIN",
+      "link" => "/api/v1/teams/18"
+    }
 
-    expect(@league_stats.count_of_teams).to eq(5)
+    expect(@stat_tracker.team_info("18")).to eq expected
   end
 
-  it '#best_offense' do
-
-    expect(@league_stats.best_offense).to eq("17")
+  it "#count_of_teams" do
+    expect(@stat_tracker.count_of_teams).to eq 32
   end
 
-  it '#worst_offense' do
-
-    expect(@league_stats.worst_offense).to eq("5")
+  it "#best_offense" do
+    expect(@stat_tracker.best_offense).to eq "Reign FC"
   end
 
-  it '#highest_scoring_visitor' do
-
-    expect(@league_stats.highest_scoring_visitor).to eq("6")
+  it "#worst_offense" do
+    expect(@stat_tracker.worst_offense).to eq "Utah Royals FC"
   end
 
-  it '#highest_scoring_home_team' do
-
-    expect(@league_stats.highest_scoring_home_team).to eq("17")
+  it "#highest_scoring_visitor" do
+    expect(@stat_tracker.highest_scoring_visitor).to eq "FC Dallas"
   end
 
-  it 'lowest_scoring_visitor' do
-
-    expect(@league_stats.worst_offense).to eq("5")
+  it "#highest_scoring_home_team" do
+    expect(@stat_tracker.highest_scoring_home_team).to eq "Reign FC"
   end
 
-  it 'lowest_scoring_home_team' do
+  it "#lowest_scoring_visitor" do
+    expect(@stat_tracker.lowest_scoring_visitor).to eq "San Jose Earthquakes"
+  end
 
-    expect(@league_stats.worst_offense).to eq("5")
+  it "#lowest_scoring_home_team" do
+    expect(@stat_tracker.lowest_scoring_home_team).to eq "Utah Royals FC"
   end
 end

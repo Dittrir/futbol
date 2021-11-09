@@ -61,8 +61,8 @@ class SeasonStats
   def most_accurate_team(season_id)
     team_name = nil
     team_shots_goals_accuracy = shot_goal_counter(season_id)
-    most_accurate_team = team_shots_goals_accuracy.max_by do |team_id, wins|
-      wins[2]
+    most_accurate_team = team_shots_goals_accuracy.max_by do |team_id, shot_goal_accuracy|
+      shot_goal_accuracy[2]
     end
     @team_data.find_all do |team|
       if team["team_id"] == most_accurate_team[0]
@@ -79,7 +79,7 @@ class SeasonStats
     least_accurate_team = team_shots_goals_accuracy.min_by do |team_id, shot_goal_accuracy|
       shot_goal_accuracy[2]
     end
-    @team_data.find_all do |team|
+    x = @team_data.find_all do |team|
       if team["team_id"] == least_accurate_team[0]
         team_name = team["teamName"]
       else
@@ -99,8 +99,50 @@ class SeasonStats
       end
     end
     shot_goals_accuracy.each do |team|
-      team[1][2] = (team[1][1].to_f / team[1][0]).round(3) #goals/shots ratio
+      team[1][2] = (team[1][1].to_f / team[1][0]).round(4) #goals/shots ratio
     end
     shot_goals_accuracy
+  end
+
+  def most_tackles(season_id)
+    team_name = nil
+    teams_tackles = tackles(season_id)
+    team_most_tackles = teams_tackles.max_by do |team_id, tackles|
+      tackles
+    end
+    @team_data.find_all do |team|
+      if team["team_id"] == team_most_tackles[0]
+        team_name = team["teamName"]
+      else
+      end
+    end
+    team_name
+  end
+
+  def fewest_tackles(season_id)
+    team_name = nil
+    teams_tackles = tackles(season_id)
+    team_most_tackles = teams_tackles.min_by do |team_id, tackles|
+      tackles
+    end
+    @team_data.find_all do |team|
+      if team["team_id"] == team_most_tackles[0]
+        team_name = team["teamName"]
+      else
+      end
+    end
+    team_name
+  end
+
+  def tackles(season_id) #team_tackles
+    team_tackles = {}
+    @season_data.map do |game|
+      if game["game_id"].slice(0..3) == season_id.slice(0..3)
+        team_tackles[game["team_id"]] ||= [0]
+        team_tackles[game["team_id"]][0] += (game["tackles"]).to_i
+      else
+      end
+    end
+    team_tackles
   end
 end
