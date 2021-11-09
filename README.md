@@ -8,7 +8,7 @@ In addition to this Repository, we would reccomend using the [Futbol Spec Harnes
 
 # Group Members and Availability
 
-Robin D., Seth Perna, Jimmy Page, Craig Cardwell
+Craig Cardwell, Robin Dittrich, Jimmy Page, Seth Perna
 
 ## Group Availability
 
