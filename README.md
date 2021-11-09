@@ -12,6 +12,6 @@ Craig Cardwell, Robin Dittrich, Jimmy Page, Seth Perna
 
 ## Group Availability
 
-**Preferred weekday groupwork times: 5pm MST - 10pm MST
+Preferred weekday groupwork times: 5pm MST - 10pm MST
 
-**Preferred weekend groupwork times: ~12pm MST - 5pm MST
+Preferred weekend groupwork times: ~12pm MST - 5pm MST
