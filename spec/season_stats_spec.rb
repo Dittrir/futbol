@@ -1,14 +1,20 @@
 require 'csv'
 require 'simplecov'
 require './lib/season_stats'
+require './lib/stat_tracker'
 
 SimpleCov.start
 
 RSpec.describe SeasonStats do
   before :each do
-    @season_path = './data/sample_game_teams.csv'
+    @game_teams_path = './data/game_teams.csv'
+    @game_path = './data/games.csv'
+    @team_path = './data/teams.csv'
+    # @game_teams_path = CSV.parse(File.read('./data/game_team.csv'), headers: true)
+    # @game_data = CSV.parse(File.read('./data/games.csv'), headers: true)
+    # @team_data = CSV.parse(File.read('./data/teams.csv'), headers: true)
 
-    @season_stats = SeasonStats.new(@season_path)
+    @season_stats = SeasonStats.new(@game_teams_path, @game_path, @team_path)
   end
 
   it 'exists' do

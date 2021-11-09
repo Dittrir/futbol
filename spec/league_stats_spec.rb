@@ -24,31 +24,31 @@ RSpec.describe LeagueStats do
 
   it '#best_offense' do
 
-    expect(@league_stats.best_offense).to eq("17")
+    expect(@league_stats.best_offense).to eq("LA Galaxy")
   end
 
   it '#worst_offense' do
 
-    expect(@league_stats.worst_offense).to eq("5")
+    expect(@league_stats.worst_offense).to eq("Sporting Kansas City")
   end
 
   it '#highest_scoring_visitor' do
 
-    expect(@league_stats.highest_scoring_visitor).to eq("6")
+    expect(@league_stats.highest_scoring_visitor).to eq("FC Dallas")
   end
 
   it '#highest_scoring_home_team' do
 
-    expect(@league_stats.highest_scoring_home_team).to eq("17")
+    expect(@league_stats.highest_scoring_home_team).to eq("LA Galaxy")
   end
 
   it 'lowest_scoring_visitor' do
 
-    expect(@league_stats.worst_offense).to eq("5")
+    expect(@league_stats.worst_offense).to eq("Sporting Kansas City")
   end
 
   it 'lowest_scoring_home_team' do
 
-    expect(@league_stats.worst_offense).to eq("5")
+    expect(@league_stats.worst_offense).to eq("Sporting Kansas City")
   end
 end

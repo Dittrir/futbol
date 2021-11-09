@@ -19,10 +19,10 @@ class TeamStats
     @stadium      = team_data["Stadium"]
     @link         = team_data["link"]
   end
-end
 
 
- 
+
+
 
   def win_loss_counter
     @season_data.each do |game|
@@ -33,5 +33,4 @@ end
       end
     end
   end
-end
-
+end 

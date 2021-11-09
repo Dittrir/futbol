@@ -17,7 +17,7 @@ class StatTracker
     @game_teams_hash = {}
     @games_path = games(locations[:games])
     @teams_path = my_teams(locations[:teams])
-    @game_teams_path = my_game_teams(locations[:game_teams])
+    #@game_teams_path = my_game_teams(locations[:game_teams])
   end
 
   def self.from_csv(locations)
@@ -156,7 +156,8 @@ class StatTracker
   def least_accurate_team(season_id)
     season_stats = SeasonStats.new(@game_teams_path, @games_path, @teams_path)
     season_stats.least_accurate_team(season_id)
-    
+  end
+
   def percentage_ties
     total_game = 0
     total_ties = 0
@@ -216,13 +217,13 @@ class StatTracker
     }
   end
 
-  def best_season(team_id)
-    game_total = 0.0
-    team_wins = 0.0
-    win_percent = 0.0
-    #need to return season id for team's highest percentage of wins
-    @game_teams_hash.map do |team|
-    require "pry"; binding.pry
-    end
-  end
+  # def best_season(team_id)
+  #   game_total = 0.0
+  #   team_wins = 0.0
+  #   win_percent = 0.0
+  #   #need to return season id for team's highest percentage of wins
+  #   @game_teams_hash.map do |team|
+  #     require "pry"; binding.pry
+  #   end
+  #end
 end

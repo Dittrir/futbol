@@ -178,7 +178,7 @@ end
   #     require "pry"; binding.pry
   #   end
   # end
-
+#
   # def average_goals_per_season
   #   avg = 0.0
   #   total = 0.0
