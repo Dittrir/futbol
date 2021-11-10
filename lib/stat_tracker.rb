@@ -152,6 +152,16 @@ class StatTracker
     season_stats.least_accurate_team(season_id)
   end
 
+  def most_tackles(season_id)
+    season_stats = SeasonStats.new(@game_teams_path, @games_path, @teams_path)
+    season_stats.most_tackles(season_id)
+  end
+
+  def fewest_tackles(season_id)
+    season_stats = SeasonStats.new(@game_teams_path, @games_path, @teams_path)
+    season_stats.fewest_tackles(season_id)
+  end
+  
   def percentage_ties
     total_game = 0
     total_ties = 0

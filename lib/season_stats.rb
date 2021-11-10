@@ -61,8 +61,8 @@ class SeasonStats
   def most_accurate_team(season_id)
     team_name = nil
     team_shots_goals_accuracy = shot_goal_counter(season_id)
-    most_accurate_team = team_shots_goals_accuracy.max_by do |team_id, wins|
-      wins[2]
+    most_accurate_team = team_shots_goals_accuracy.max_by do |team_id, shot_goal_accuracy|
+      shot_goal_accuracy[2]
     end
     @team_data.find_all do |team|
       if team["team_id"] == most_accurate_team[0]
@@ -79,7 +79,7 @@ class SeasonStats
     least_accurate_team = team_shots_goals_accuracy.min_by do |team_id, shot_goal_accuracy|
       shot_goal_accuracy[2]
     end
-    @team_data.find_all do |team|
+    x = @team_data.find_all do |team|
       if team["team_id"] == least_accurate_team[0]
         team_name = team["teamName"]
       else
@@ -134,7 +134,7 @@ class SeasonStats
     team_name
   end
 
-def tackles(season_id) #team_tackles
+  def tackles(season_id) #team_tackles
     team_tackles = {}
     @season_data.map do |game|
       if game["game_id"].slice(0..3) == season_id.slice(0..3)

@@ -38,8 +38,4 @@ RSpec.describe LeagueStats do
   it 'lowest_scoring_visitor' do
     expect(@league_stats.worst_offense).to eq("Sporting Kansas City")
   end
-
-  it 'lowest_scoring_home_team' do
-    expect(@league_stats.worst_offense).to eq("Sporting Kansas City")
-  end
 end

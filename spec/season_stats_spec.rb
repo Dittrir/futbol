@@ -14,8 +14,18 @@ RSpec.describe SeasonStats do
   end
 
   it 'exists' do
+    before(:all) do
+      game_path = './data/games.csv'
+      team_path = './data/teams.csv'
+      game_teams_path = './data/game_teams.csv'
 
-    expect(@season_stats).to be_an_instance_of(SeasonStats)
+      locations = {
+        games: game_path,
+        teams: team_path,
+        game_teams: game_teams_path
+      }
+
+    @stat_tracker = StatTracker.from_csv(locations)
   end
 
   it "#winningest_coach" do
