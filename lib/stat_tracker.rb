@@ -211,45 +211,25 @@ class StatTracker
     }
   end
 
-  def best_season(team_id)
-    season = nil
-    team_wins_percent = win_percent(team_id)
-    # require "pry"; binding.pry
-    best_team_season = team_wins_percent.max_by do |season_id, wins_total_percent|
-      wins_total_percent[2]
-    end
-    # winningest_coach = @season_data.find_all do |game_team|
-    #   if game_team["team_id"] == winningest_team[0] && game_team["game_id"].slice(0..3) == season_id.slice(0..3)
-    #     coach = game_team["head_coach"]
-    #   else
-    #   end
-    # end
-    # coach
-  end
-
-  def win_percent(team_id) #best ratio of shots to goals for the season
-    wins_total_percent = {}
-    @game_teams_hash.each do |game|
-      # if game["game_id"].slice(0..3) == season_id.slice(0..3)
-      # require "pry"; binding.pry
-      if game[0] == team_id
-        # require "pry"; binding.pry
-        wins_total_percent[game[1].game_id.slice(0..3)] ||= [0, 0, 0]
-        if game[1].result == "WIN"
-        wins_total_percent[game[1].game_id.slice(0..3)][0] += 1
-        wins_total_percent[game[1].game_id.slice(0..3)][1] += 1
-      elsif game[1].result == "LOSS"
-        wins_total_percent[game[1].game_id.slice(0..3)][1] += 1
-        else #game["result"] == "TIE"
-        wins_total_percent[game[1].game_id.slice(0..3)][1] += 1
-        end
-      else
+  def most_goals_scored(team_id)
+    team_goals = []
+    @game_hash.each_value do |game|
+      if game.away_team_id == team_id || game.home_team_id == team_id
+        team_goals << game.away_goals
+        team_goals << game.home_goals
       end
     end
-    # require "pry"; binding.pry
-    wins_total_percent.each do |season|
-      season[1][2] = (season[1][1].to_f / season[1][0]).round(3) #goals/shots ratio
+    team_goals.max
+  end
+
+  def fewest_goals_scored(team_id)
+    team_goals = []
+    @game_hash.each_value do |game|
+      if game.away_team_id == team_id || game.home_team_id == team_id
+        team_goals << game.away_goals
+        team_goals << game.home_goals
+      end
     end
-    wins_total_percent
+    team_goals.min
   end
 end
